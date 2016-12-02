@@ -7,24 +7,33 @@
 		<link rel='stylesheet' type='text/css' href='estilo.css' />
 		<meta charset="utf-8">
 	</head>
-	<body>
+	<body class="fondo">
 		<ul>
-			<li><img src="logo.png"/></li>
+			<li><img src="display.png"/></li>
 			<li><a href="Layout.html">Inicio</a></li>
 			<li class="right"><a href="Registro.php">Registrarse</a></li>
 			<li class="right"><a href="Login.php" class="active">Login</a></li>
 		</ul>
 
-<div style="padding:20px;margin-top:30px;">
-		<h1> LOGIN </h1>
+	<div style="padding:20px;margin-top:70px; height: 700px">
 
-		<form method="post">
-		<div class="center">
-			<p> Username : <input type="text" required name="username" size="21" value="" /> </p>
+		<div class="container">
+
+		<form id="login" method="post">
+
+		<div class="header">
+			<h3> LOGIN </h3>
+		</div>
+
+		<div class="sep"> </div>
+
+		<div class="inputs">
+			<p> Username: <input type="text" required name="username" size="21" value="" autofocus=""/> </p>
 			<p> Password: <input type="password" required name="pass" size="21" value="" /> </p>
-			<p> <input id="login" value="Login" type="submit" /> </p>
+			<p> <input id="submit" value="ENTRAR" type="submit" /> </p>
 		</div>
 		</form>
+		</div>
 		</div>
 		
 	</body>

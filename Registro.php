@@ -18,50 +18,59 @@
 
 	</script>
 </head>
-<body>
+<body class="fondo">
 	<ul>
-		<li><img src="logo.png"/></li>
+		<li><img src="display.png"/></li>
 		<li><a href="Layout.html">Inicio</a></li>
 		<li class="right"><a href="Registro.php" class="active">Registrarse</a></li>
 		<li class="right"><a href="Login.php">Login</a></li>
 	</ul>
 
-<div style="padding:20px;margin-top:30px;">
-<h1> REGISTO </h1>
+	<div style="padding:20px;margin-top:70px;">
 
-	<form id='registro' name='registro' action='Registro.php' method="post" enctype="multipart/form-data">
-	
-		Nombre(*): <input type="text" id="nombre" name="Nombre" required><br>
-		
-    	Apellidos(*): <input type="text" id="apellidos" name="Apellidos" required pattern="[a-zA-Z]+(\s)+[a-zA-Z]+"><br>
+		<div class="container">
 
-    	Username(*): <input type="text" id="username" name="Username" required><br> 
-    	<!-- AJAX PARA VER SI EXISTE DICHO USERNAME -->
-		
-    	Direccion de correo(*): <input type="email" id="correo" name="Correo" required placeholder="you@youremail.com"> <br>
-    	<!-- AJAX PARA VER SI DICHO EMAIL YA SE HA REGISTRADO -->
+			<form id='registro' name='registro' action='Registro.php' method="post" enctype="multipart/form-data">
 
-    	Contraseña(*): <input type="password" id="password" name="Password" required placeholder="Minimo 6 caracteres" pattern=".{6,}"> <br>
-    	<!-- AJAX PARA VER SI LA CONTRASEÑA ES SEGURA??? -->
+				<div class="header">
+					<h3> REGISTRO </h3>
+				</div>
 
-    	Repita la contraseña(*): <input type="password" id="password2" name="Password2" required placeholder="Minimo 6 caracteres" pattern=".{6,}"> <br>
-    	<!-- VER SI LAS CONTRASEÑAS SON IGUALES -->
-		
-		Avatar (Opcional): <input type="file" id="imagen" name="imagen" accept="image/*" onchange="fotoDinamica(this)" onload="this.value=null"> <br/>
+				<div class="sep"></div>
 
-		<p> <img src = "avatar.png" id = "avatar" width="150" height="250"> </p>
-		<br/>
-		
-		<p align="center">
-   		<input type="submit" value="REGISTRARSE" name="submit"> 
-		&nbsp;
-		&nbsp;
-		<input type="reset" value="BORRAR" name="reset">
-		</p>
-		
-	</form>
+				<div class="inputs">
+
+					Nombre(*): <input type="text" id="nombre" name="Nombre" required autofocus=""><br>
+
+					Apellidos(*): <input type="text" id="apellidos" name="Apellidos" required pattern="[a-zA-Z]+(\s)+[a-zA-Z]+"><br>
+
+					Username(*): <input type="text" id="username" name="Username" required><br> 
+					<!-- AJAX PARA VER SI EXISTE DICHO USERNAME -->
+
+					Direccion de correo(*): <input type="text" id="correo" name="Correo" required placeholder="you@youremail.com" pattern="[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})"> <br>
+					<!-- AJAX PARA VER SI DICHO EMAIL YA SE HA REGISTRADO -->
+
+					Contraseña(*): <input type="password" id="password" name="Password" required placeholder="Mínimo 6 caracteres" pattern=".{6,}"> <br>
+					<!-- AJAX PARA VER SI LA CONTRASEÑA ES SEGURA??? -->
+
+					Repita la contraseña(*): <input type="password" id="password2" name="Password2" required pattern=".{6,}"> <br>
+					<!-- VER SI LAS CONTRASEÑAS SON IGUALES -->
+
+					Avatar (Opcional): <br/><br/>
+
+					<p> <img src = "avatar.png" id = "avatar"> </p>
+					<input type="file" id="imagen" name="imagen" accept="image/*" onchange="fotoDinamica(this)" onload="this.value=null" class="inputfile">
+					<label for="imagen">Examinar...</label> <br/>
+					<br/>
+
+					<p align="center">
+						<input type="submit" id="submit" value="REGISTRARSE" name="submit"> 
+					</p>
+				</div>
+			</form>
+		</div>
+
 	</div>
-
 </body>
 </html>
 
@@ -166,7 +175,7 @@
 
 		$target_dir = "avatares/";
 
-		$ext = explode('.', basename($_FILES['imagen']['name'][$i]));   // Explode file name from dot(.)
+		$ext = explode('.', basename($_FILES['imagen']['name']));   // Explode file name from dot(.)
 		$file_extension = end($ext); // Store extensions in the variable.
 		$target_file = $target_dir . $username . "." . $file_extension; 
 		

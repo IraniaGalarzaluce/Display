@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if (!isset($_SESSION['username'])){
+		header("location:Login.php");
+	}
 ?>
 <html>
 <head>
@@ -9,7 +12,7 @@
 </head>
 <body>
  	<ul>
-  		<li><img src="logo.png"/></li>
+  		<li><img src="display.png"/></li>
   		<li><a href="LayoutUser.php" class="active">Inicio</a></li>
   		<li><a href="AlbumesUser.php">Mis Álbumes</a></li>
   		<li class="right"><a href="......">AVATAR</a></li>
