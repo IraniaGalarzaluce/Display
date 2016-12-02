@@ -1,0 +1,66 @@
+<?php
+	session_start();
+?>
+<html>
+	<head>
+		<title> Login </title>
+		<link rel='stylesheet' type='text/css' href='estilo.css' />
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<ul>
+			<li><img src="logo.png"/></li>
+			<li><a href="Layout.html">Inicio</a></li>
+			<li class="right"><a href="Registro.php">Registrarse</a></li>
+			<li class="right"><a href="Login.php" class="active">Login</a></li>
+		</ul>
+
+<div style="padding:20px;margin-top:30px;">
+		<h1> LOGIN </h1>
+
+		<form method="post">
+		<div class="center">
+			<p> Username : <input type="text" required name="username" size="21" value="" /> </p>
+			<p> Password: <input type="password" required name="pass" size="21" value="" /> </p>
+			<p> <input id="login" value="Login" type="submit" /> </p>
+		</div>
+		</form>
+		</div>
+		
+	</body>
+</html>
+
+<?php
+	if (isset($_POST['username'])){
+		
+		$link = mysqli_connect("localhost", "root", "", "display");
+		//$link = mysqli_connect("mysql.hostinger.es", "u531741362_admin", "iratiania", "u531741362_dp");
+	
+		$name=$_POST['username']; 
+		$pass=$_POST['pass'];
+
+		$passEnc = sha1($pass);
+		
+		$usuarios = mysqli_query($link,"select * from usuario where username='$name' and password='$passEnc'");
+		
+		$cont = mysqli_num_rows($usuarios); 
+			
+		if($cont==1){
+
+			$_SESSION['username'] = $name;
+
+			// $horaConex = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
+			// $sql="INSERT INTO conexiones(Correo, Hora) VALUES ('$email', '$horaConex' )";
+			// if (!mysqli_query($link ,$sql)){
+			// 	die('Error: ' . mysqli_error($link));
+			// }
+				
+			header("location:LayoutUser.php");
+		}
+		else {
+			echo "<p> <FONT COLOR=RED>Datos incorrectos !!</FONT> </p>";
+		}
+	
+		mysqli_close($link);
+	}
+?>
